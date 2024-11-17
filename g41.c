@@ -41,3 +41,47 @@ int main() {
     printf("%.2f", travel_allowance);
     return 0;
 }
+
+
+/*another method*/
+
+#include <stdio.h>
+
+int main() {
+    char rank;
+    char mode_of_transport;
+    float travel_allowance = 0.0;
+
+    // Read rank and mode of transport
+    scanf(" %c", &rank);  // Notice the space before %c to avoid newline issues
+    scanf(" %c", &mode_of_transport);
+
+    // Check if rank is 'M'
+    if (rank == 'M' || rank == 'm') {
+        // Handle the different modes of transport using a switch statement
+        switch (mode_of_transport) {
+            case 'C':  // Car mode
+            case 'c':  // Car mode (case insensitive)
+                {
+                    float distance;
+                    scanf("%f", &distance);
+                    travel_allowance = distance * 0.50;
+                }
+                break;
+            case 'T':  // Train mode
+            case 't':  // Train mode (case insensitive)
+                travel_allowance = 30.00;
+                break;
+            default:  // Invalid mode of transport
+                travel_allowance = 0.00;
+                break;
+        }
+    } else {
+        // If rank is not 'M' or 'm', no allowance is calculated
+        travel_allowance = 0.00;
+    }
+
+    // Output the result
+    printf("%.2f\n", travel_allowance);
+    return 0;
+}
